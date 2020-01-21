@@ -1,3 +1,4 @@
+
 let initReducer = {
     bugdets : []
 }
@@ -17,6 +18,9 @@ const isEquals = (obj1,obj2) =>{
 }
 
 const RooteReducer = (state = initReducer, action) =>{
+
+    const store = localStorage.getItem("bugdets")
+   
 
     if(action.type === 'ADD_ENTRE'){
         const bugde = action.bugde;
@@ -55,10 +59,15 @@ const RooteReducer = (state = initReducer, action) =>{
         }
 
     }
-    let bugdets = JSON.parse(localStorage.getItem("bugdets"))
-    return{
-        ...state,
-        bugdets
+
+    if(store === null){
+        return state
+    }else{
+        let bugdets = JSON.parse(localStorage.getItem("bugdets"))
+        return{
+            ...state,
+            bugdets
+        }
     }
 }
 
