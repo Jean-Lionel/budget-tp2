@@ -20,8 +20,8 @@ static getDerivedStateFromProps(props, state) {
             return b.sign === '-';
         }
         )
-        let incomes = 0;
-        let expenses = 0;
+        let incomes = 0.0;
+        let expenses = 0.0;
         for(let a of incomesBugdet)
             incomes += Number(a.val)
 
@@ -44,13 +44,13 @@ static getDerivedStateFromProps(props, state) {
             <div className={styles.header}>
                     <div className="container center ">
                     <p className="white-text">Available Budget The {day}<sup>th</sup>-{month}-{year}:</p>
-                    <h2 className="white-text">{this.state.available}</h2>
+                    <h2 className="white-text">{this.state.available}.00</h2>
 
                     <div className="row">
     <div className={"col s12 l6 offset-l3 green "+styles.card}>
-        <span className={styles.left}>INCOME</span><span>+ {this.state.income}</span></div>
+        <span className={styles.left}>INCOME</span><span>+{this.state.income}.00</span></div>
          <div className={"col s12 l6 offset-l3 red " + styles.card}>
-             <span className={styles.left}>EXPENSES</span><span>- {this.state.expense}</span>
+             <span className={styles.left}>EXPENSES</span><span>-{this.state.expense}.00</span>
          </div>
                     </div>
                     </div>

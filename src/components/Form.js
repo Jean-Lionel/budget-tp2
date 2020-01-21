@@ -12,18 +12,24 @@ class Form extends Component {
     handleChange = (e) =>{
        const name = e.target.name;
        const val = e.target.value;
-       this.setState({
-           [name] : val
-       })
+
+            this.setState({
+                [name]: val
+            })
+
+      
     }
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.addNewBugde(this.state)
-        this.setState({
-            sign: '+',
-            description : '',
-            val : ''  
-        })
+        if (Number(this.state.val) >0){
+            this.props.addNewBugde(this.state)
+            this.setState({
+                sign: '+',
+                description: '',
+                val: ''
+            })
+
+        }
 
     }
     render() {
@@ -38,7 +44,7 @@ class Form extends Component {
                             </select>
                         </div>
                         <div className="col m6 input-field">
-                            <input type="text" onChange={this.handleChange} name="description" value={this.state.description} required placeholder="Description" />
+                            <input type="text" onChange={this.handleChange} name="description" value={this.state.description} required placeholder="Add description" />
                             
                         </div>
                         <div className="col m2 input-field">
