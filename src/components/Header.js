@@ -40,6 +40,10 @@ static getDerivedStateFromProps(props, state) {
         const month = new Date().getMonth()+1;
         const year = new Date().getFullYear();
         const day = new Date().getDate();
+        const pourcentValue = Number(this.state.expense) && Number(this.state.available) && Number(this.state.income) >0  ?(
+            <span>{Number(this.state.expense) * 100 / Number(this.state.income)}%</span>
+        ):(<span>-</span>)
+    
         return (
             <div className={styles.header}>
                     <div className="container center ">
@@ -50,7 +54,7 @@ static getDerivedStateFromProps(props, state) {
     <div className={"col s12 l6 offset-l3 green "+styles.card}>
         <span className={styles.left}>INCOME</span><span>+{this.state.income}.00</span></div>
          <div className={"col s12 l6 offset-l3 red " + styles.card}>
-             <span className={styles.left}>EXPENSES</span><span>-{this.state.expense}.00</span>
+        <span className={styles.left}>EXPENSES</span><span>-{this.state.expense}.00 <span className="badge">{pourcentValue}</span></span>
          </div>
                     </div>
                     </div>

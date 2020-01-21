@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 class Form extends Component {
     state = {
+        id : '',
         sign: '+',
         description : '',
         val : ''
@@ -16,6 +17,10 @@ class Form extends Component {
             this.setState({
                 [name]: val
             })
+        const key = Math.floor(Math.random() * 1000)
+        this.setState({
+            id: (key+"")
+        })
 
       
     }
